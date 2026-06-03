@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Really Sorry, Bestie 🥺❤️</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom Color System & Theme Variables */
+        :root {
+            --pastel-pink-light: #FFF0F5;
+            --pastel-pink: #FFC6FF;
+            --pastel-pink-dark: #FF9EBB;
+            --pastel-lavender-light: #E8E7FF;
+            --pastel-lavender: #D6C7FF;
+            --pastel-lavender-dark: #A29BFE;
+            --pastel-blue-light: #E0F7FA;
+            --pastel-blue: #B3E5FC;
+            --pastel-blue-dark: #81D4FA;
+            --text-dark: #4A3B5C;
+            --text-muted: #74638A;
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-bg-hover: rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --card-shadow: 0 8px 32px 0 rgba(162, 155, 254, 0.15);
+            --card-shadow-hover: 0 12px 40px 0 rgba(255, 158, 187, 0.25);
+            --font-fancy: 'Pacifico', cursive;
+            --font-handwritten: 'Dancing Script', cursive;
+            --font-sans: 'Quicksand', sans-serif;
+        }
+
+        /* Ambient Dynamic Background CSS */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-dark);
+            background: linear-gradient(-45deg, #FFF0F5, #E8E7FF, #E0F7FA, #FFF0F5);
+            background-size: 400% 400%;
+            animation: gradientBG 20s ease infinite;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Canvas Particle Layer */
+        #ambient-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--pastel-pink-light);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--pastel-lavender);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--pastel-lavender-dark);
+        }
+
+        /* Personalization Setup Overlay */
+        .setup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(232, 231, 255, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .setup-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.95);
+        }
+
+        .setup-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 2px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .setup-card h2 {
+            font-family: var(--font-fancy);
+            color: var(--pastel-lavender-dark);
+            margin-bottom: 15px;
+            font-size: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .setup-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+            padding-left: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 18px;
+            border-radius: 15px;
+            border: 2px solid var(--pastel-lavender-light);
+            background: rgba(255, 255, 255, 0.8);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--text-dark);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            border-color: var(--pastel-pink-dark);
+            box-shadow: 0 0 10px rgba(255, 158, 187, 0.3);
+            background: #fff;
+        }
+
+        .setup-btn {
+            background: linear-gradient(135deg, var(--pastel-pink) 0%, var(--pastel-lavender) 100%);
+            border: none;
+            color: var(--text-dark);
+            padding: 12px 35px;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(214, 199, 255, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: 10px;
+        }
+
+        .setup-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 198, 255, 0.6);
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            height: 60px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 20px;
+            box-shadow: var(--card-shadow);
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            background: rgba(255, 255, 255, 0.6);
+            color: var(--pastel-lavender-dark);
+            transform: scale(1.05);
+        }
+
+        .edit-names-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--card-shadow);
+            z-index: 99;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .edit-names-btn:hover {
+            transform: scale(1.1) rotate(15deg);
+            background: var(--pastel-pink);
+        }
+
+        /* Container & Layout */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+            padding-bottom: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 140px;
+            padding-bottom: 60px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-family: var(--font-fancy);
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, #a29bfe, #ff9ebb, #81d4fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            animation: floatText 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatText {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-8px) rotate(-1deg); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-image-wrapper {
+            width: 100%;
+            max-width: 650px;
+            border-radius: 30px;
+            overflow: hidden;
+            border: 8px solid var(--glass-border);
+            background: var(--glass-bg);
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .hero-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 22px;
+            border: 2px dashed rgba(255, 255, 255, 0.8);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .hero-image-wrapper:hover {
+            transform: scale(1.02) translateY(-5px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image-wrapper:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Section Generic Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+            margin-top: 50px;
+        }
+
+        .section-title {
+            font-family: var(--font-fancy);
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--pastel-pink) 0%, var(--pastel-lavender) 100%);
+        }
+
+        .section-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        /* Letter Section (Interactive Envelope) */
+        .envelope-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+            margin-bottom: 80px;
+        }
+
+        .envelope-container {
+            width: 100%;
+            max-width: 700px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .envelope-container:hover {
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .envelope-box {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            border: 2px solid var(--pastel-lavender-light);
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .envelope-box.opened {
+            height: auto;
+            min-height: 450px;
+            cursor: default;
+            padding: 30px 10px;
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .envelope-box .click-prompt {
+            position: absolute;
+            text-align: center;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .envelope-box.opened .click-prompt {
+            opacity: 0;
+        }
+
+        .click-prompt svg {
+            width: 70px;
+            height: 70px;
+            fill: var(--pastel-pink-dark);
+            animation: bounceEnvelope 2s infinite;
+        }
+
+        @keyframes bounceEnvelope {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-12px) scale(1.05); }
+        }
+
+        .click-prompt p {
+            font-family: var(--font-handwritten);
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-top: 15px;
+        }
+
+        /* The actual letter content inside the envelope */
+        .letter-content {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-width: 580px;
+            width: 90%;
+            pointer-events: none;
+            text-align: left;
+        }
+
+        .envelope-box.opened .letter-content {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .letter-header {
+            font-family: var(--font-handwritten);
+            font-size: 2.2rem;
+            color: var(--pastel-pink-dark);
+            margin-bottom: 20px;
+            border-bottom: 1px dashed var(--pastel-pink-dark);
+            padding-bottom: 8px;
+        }
+
+        .letter-body {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .letter-body p {
+            margin-bottom: 15px;
+            text-indent: 10px;
+        }
+
+        .letter-body strong {
+            color: var(--pastel-lavender-dark);
+        }
+
+        .letter-signature {
+            font-family: var(--font-handwritten);
+            font-size: 2rem;
+            text-align: right;
+            margin-top: 30px;
+            color: var(--pastel-lavender-dark);
+            border-top: 1px dashed var(--pastel-lavender-light);
+            padding-top: 12px;
+        }
+
+        .envelope-close-btn {
+            display: none;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .envelope-box.opened .envelope-close-btn {
+            display: block;
+        }
+
+        .envelope-close-btn:hover {
+            color: var(--pastel-pink-dark);
+        }
+
+        /* Memories Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .gallery-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .gallery-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 19px;
+            border: 2px solid transparent;
+            pointer-events: none;
+            transition: border-color 0.4s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .gallery-card:hover::after {
+            border-color: var(--pastel-pink);
+        }
+
+        .gallery-img-container {
+            width: 100%;
+            height: 190px;
+            overflow: hidden;
+            background: var(--pastel-lavender-light);
+            position: relative;
+        }
+
+        .gallery-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-card:hover .gallery-img-container img {
+            transform: scale(1.08);
+        }
+
+        .gallery-info {
+            padding: 18px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--pastel-lavender-dark);
+            margin-bottom: 6px;
+        }
+
+        .gallery-title {
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .gallery-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Quotes Carousel Section */
+        .quotes-section {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 40px 20px;
+            box-shadow: var(--card-shadow);
+            backdrop-filter: blur(10px);
+            margin-bottom: 80px;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .quotes-slider {
+            position: relative;
+            min-height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quote-slide {
+            position: absolute;
+            opacity: 0;
+            transform: scale(0.9) translateY(10px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 750px;
+            width: 100%;
+            pointer-events: none;
+        }
+
+        .quote-slide.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+
+        .quote-text {
+            font-family: var(--font-handwritten);
+            font-size: 2.2rem;
+            line-height: 1.5;
+            color: var(--pastel-lavender-dark);
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
+        }
+
+        .quote-author {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .quotes-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--pastel-lavender-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--pastel-pink-dark);
+            transform: scale(1.3);
+        }
+
+        /* Interactive Forgive Me Section */
+        .forgive-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 50px 30px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            backdrop-filter: blur(10px);
+            margin-bottom: 80px;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .forgive-card.success-mode {
+            background: rgba(255, 240, 245, 0.7);
+            border-color: var(--pastel-pink);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .forgive-question {
+            font-family: var(--font-fancy);
+            font-size: 2.4rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            transition: all 0.4s ease;
+        }
+
+        .forgive-sub {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: all 0.4s ease;
+        }
+
+        .button-cluster {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            min-height: 80px;
+            position: relative;
+        }
+
+        .btn-forgive {
+            background: linear-gradient(135deg, #ff9ebb 0%, #ffc6ff 100%);
+            border: none;
+            color: white;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 1.4rem;
+            padding: 16px 45px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 158, 187, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 10;
+            animation: heartbeatButton 1.5s infinite;
+        }
+
+        @keyframes heartbeatButton {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .btn-forgive:hover {
+            transform: scale(1.08) translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 158, 187, 0.6);
+            animation: none;
+        }
+
+        .btn-no {
+            background: rgba(162, 155, 254, 0.15);
+            border: 2px solid var(--pastel-lavender);
+            color: var(--text-dark);
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 12px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+
+        /* Success screen inside forgive card */
+        .success-box {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .success-box.show {
+            display: flex;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .success-icon {
+            font-size: 5rem;
+            animation: bounceSuccess 2s infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes bounceSuccess {
+            0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+            50% { transform: translateY(-15px) scale(1.08) rotate(5deg); }
+        }
+
+        .success-title {
+            font-family: var(--font-fancy);
+            font-size: 2.8rem;
+            color: var(--pastel-pink-dark);
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .success-text {
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        /* Dynamic Boba invitation */
+        .boba-ticket {
+            background: white;
+            border: 3px dashed var(--pastel-pink);
+            border-radius: 20px;
+            padding: 20px 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            box-shadow: 0 4px 15px rgba(255, 198, 255, 0.3);
+            max-width: 480px;
+            width: 100%;
+            position: relative;
+        }
+
+        .boba-ticket::before, .boba-ticket::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--pastel-pink-light);
+            border-radius: 50%;
+            border: 3px solid transparent;
+        }
+        .boba-ticket::before { left: -12px; border-right-color: var(--pastel-pink); }
+        .boba-ticket::after { right: -12px; border-left-color: var(--pastel-pink); }
+
+        .ticket-info {
+            text-align: left;
+        }
+
+        .ticket-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .ticket-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .ticket-date {
+            font-family: var(--font-fancy);
+            color: var(--pastel-lavender-dark);
+            font-size: 1.2rem;
+            border-left: 2px dashed var(--pastel-lavender-light);
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ticket-date span {
+            font-size: 0.75rem;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--glass-border);
+            margin-top: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .footer p {
+            margin-bottom: 8px;
+        }
+
+        .footer-heart {
+            color: #ff9ebb;
+            animation: pulseHeart 1.2s infinite;
+            display: inline-block;
+        }
+
+        @keyframes pulseHeart {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Custom float animations */
+        .floating-element {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.6;
+            animation: drift 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(15px, -15px) rotate(15deg); }
+        }
+
+        /* Responsiveness Styling */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.05rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .envelope-box {
+                height: 320px;
+            }
+            .click-prompt p {
+                font-size: 1.4rem;
+            }
+            .quote-text {
+                font-size: 1.6rem;
+            }
+            .btn-forgive {
+                font-size: 1.2rem;
+                padding: 14px 35px;
+            }
+            .success-title {
+                font-size: 2.2rem;
+            }
+            .boba-ticket {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 20px;
+            }
+            .boba-ticket::before, .boba-ticket::after {
+                display: none;
+            }
+            .ticket-info {
+                text-align: center;
+            }
+            .ticket-date {
+                border-left: none;
+                border-top: 2px dashed var(--pastel-lavender-light);
+                padding-left: 0;
+                padding-top: 10px;
+                width: 100%;
+            }
+            .button-cluster {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Overlay Canvas for Particle System -->
+    <canvas id="ambient-canvas"></canvas>
+
+    <!-- Setup/Personalization Overlay Modal -->
+    <div class="setup-overlay" id="setup-modal">
+        <div class="setup-card">
+            <h2>Personalize It! ✨</h2>
+            <p>Enter the details below to customize this apology letter and BFF contract for your best friend.</p>
+            
+            <div class="input-group">
+                <label for="friend-name-input">Her Name (Best Friend):</label>
+                <input type="text" id="friend-name-input" placeholder="e.g. Saloni Saini" value="Saloni Saini">
+            </div>
+            
+            <div class="input-group">
+                <label for="your-name-input">Your Name:</label>
+                <input type="text" id="your-name-input" placeholder="e.g. Jason" value="Your Friend">
+            </div>
+
+            <button class="setup-btn" onclick="savePersonalization()">Generate Magic 🪄</button>
+        </div>
+    </div>
+
+    <!-- Edit Names Button -->
+    <div class="edit-names-btn" id="edit-btn" onclick="openPersonalization()" title="Edit personalization details">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+            <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+        </svg>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="#home" class="active">Home</a>
+        <a href="#letter">Apology</a>
+        <a href="#gallery">Memories</a>
+        <a href="#interactive">Forgive Me</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- 1. Hero Section -->
+        <header class="hero" id="home">
+            <h1 class="hero-title" id="hero-heading">🥺 I'm Really Sorry ❤️</h1>
+            <p class="hero-subtitle">
+                To my wonderful best friend, <strong id="hero-friend-name">Bestie</strong>. Our friendship means the world to me, and I made this little space just to say sorry and show you how much I care.
+            </p>
+            
+            <div class="hero-image-wrapper">
+                <img src="ishu5.jpeg" alt="Best Friends Anime Illustration">
+            </div>
+        </header>
+
+        <!-- 2. Apology Letter Section -->
+        <section class="section-header" id="letter">
+            <h2 class="section-title">A Message From My Heart</h2>
+            <p class="section-desc">Click the envelope below to open my apology letter</p>
+        </section>
+
+        <div class="envelope-section">
+            <div class="envelope-container">
+                <div class="envelope-box" id="envelope" onclick="openLetter(event)">
+                    <button class="envelope-close-btn" onclick="closeLetter(event)" title="Close letter">×</button>
+                    
+                    <div class="click-prompt" id="envelope-prompt">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <p>For <span class="recipient-name">Bestie</span></p>
+                    </div>
+
+                    <div class="letter-content" id="letter-content">
+                        <h3 class="letter-header">Dear <span class="recipient-name">Bestie</span>,</h3>
+                        <div class="letter-body">
+                            <p>
+                                I am writing this because words sometimes fall short when I speak to you in person, but I wanted to make sure you know how incredibly sorry I am. I value our friendship more than you could ever imagine, and it hurts me deeply to know that I've caused any friction or sadness between us.
+                            </p>
+                            <p>
+                                You are the person who understands my silly jokes, stands by me in tough times, and fills my life with warmth and laughter. Our bond is built on trust, countless shared secrets, and smiles. I hate the thought of any misunderstanding getting in the way of what we have.
+                            </p>
+                            <p>
+                                Please forgive me for my mistakes. I promise to be a better best friend, to listen more carefully, and to protect this beautiful friendship we've built over the years.
+                            </p>
+                            <p>
+                                Thank you for always being you. You are irreplaceable.
+                            </p>
+                        </div>
+                        <h4 class="letter-signature">Love, <br><span id="sender-signature">Your Friend</span></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Memories Gallery Section -->
+        <section class="section-header" id="gallery">
+            <h2 class="section-title">Our Happy Memories</h2>
+            <p class="section-desc">Just a little reminder of the sweet chapters of our journey together</p>
+        </section>
+
+        <div class="gallery-grid">
+            <!-- Card 1 -->
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img src="ishu1.jpeg" alt="Sweet Moments">
+                </div>
+                <div class="gallery-info">
+                    <span class="gallery-tag">Comfort</span>
+                    <h3 class="gallery-title">Sweet Moments</h3>
+                    <p class="gallery-desc">Always there to support each other and bring out the brightest smiles, no matter the weather.</p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img src="ishu2.jpeg" alt="Blooming Friendship">
+                </div>
+                <div class="gallery-info">
+                    <span class="gallery-tag">Growth</span>
+                    <h3 class="gallery-title">Blooming Bond</h3>
+                    <p class="gallery-desc">Like fresh flowers in spring, our friendship grows more beautiful and resilient with every passing season.</p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img src="ishu3 .jpeg" alt="Coffee & Chats">
+                </div>
+                <div class="gallery-info">
+                    <span class="gallery-tag">Laughter</span>
+                    <h3 class="gallery-title">Cozy Cafe Chats</h3>
+                    <p class="gallery-desc">Spending hours talking about everything and nothing, over warm cups and shared laughter.</p>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img src="ishu4.jpeg" alt="Dreamy Secrets">
+                </div>
+                <div class="gallery-info">
+                    <span class="gallery-tag">Dreams</span>
+                    <h3 class="gallery-title">Magical Wishes</h3>
+                    <p class="gallery-desc">Catching dreams, sharing our deepest secrets, and looking forward to a beautiful future side by side.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Quotes Slider -->
+        <section class="quotes-section">
+            <div class="quotes-slider" id="quotes-slider">
+                <!-- Slide 1 -->
+                <div class="quote-slide active">
+                    <p class="quote-text">"A best friend is like a four-leaf clover: hard to find and lucky to have."</p>
+                    <p class="quote-author">Irish Proverb</p>
+                </div>
+                <!-- Slide 2 -->
+                <div class="quote-slide">
+                    <p class="quote-text">"In the cookie of life, best friends are the chocolate chips. 🍪"</p>
+                    <p class="quote-author">Unknown</p>
+                </div>
+                <!-- Slide 3 -->
+                <div class="quote-slide">
+                    <p class="quote-text">"True friendship is when two people can walk in opposite directions, yet remain side by side."</p>
+                    <p class="quote-author">Josh Billings</p>
+                </div>
+                <!-- Slide 4 -->
+                <div class="quote-slide">
+                    <p class="quote-text">"We didn't realize we were making memories, we just knew we were having fun."</p>
+                    <p class="quote-author">A.A. Milne</p>
+                </div>
+            </div>
+            <div class="quotes-dots" id="quotes-dots">
+                <div class="dot active" onclick="setSlide(0)"></div>
+                <div class="dot" onclick="setSlide(1)"></div>
+                <div class="dot" onclick="setSlide(2)"></div>
+                <div class="dot" onclick="setSlide(3)"></div>
+            </div>
+        </section>
+
+        <!-- 5. Interactive "Forgive Me" Section -->
+        <section class="section-header" id="interactive">
+            <h2 class="section-title">The Big Question</h2>
+            <p class="section-desc">What do you say, bestie? 👉👈</p>
+        </section>
+
+        <div class="forgive-card" id="forgive-card">
+            <!-- Normal Question State -->
+            <div id="question-state">
+                <h3 class="forgive-question">Will you forgive me? 🥺</h3>
+                <p class="forgive-sub">I promise to buy you your favorite sweet treats if you click yes!</p>
+                
+                <div class="button-cluster">
+                    <button class="btn-forgive" id="yes-btn" onclick="triggerForgiveness()">Forgive Me! 💖</button>
+                    <button class="btn-no" id="no-btn">No 😢</button>
+                </div>
+            </div>
+
+            <!-- Success State -->
+            <div class="success-box" id="success-state">
+                <span class="success-icon">🎉🌸🧋</span>
+                <h3 class="success-title">Yay! BFFs Forever! ❤️</h3>
+                <p class="success-text">
+                    Thank you so much, <span class="recipient-name">Saloni Saini</span>! You have made me the happiest person ever. Our contract of absolute best friendship is officially renewed! Here is your official reconciliation coupon:
+                </p>
+                <div class="boba-ticket">
+                    <div class="ticket-info">
+                        <h4 class="ticket-title">🧋 Official Boba & Ice Cream Date</h4>
+                        <p class="ticket-desc">Valid for one free boba and a massive scoop of ice cream on <span id="sender-ticket-name">Jason</span>'s tab.</p>
+                    </div>
+                    <div class="ticket-date">
+                        <span id="ticket-month">JUNE</span>
+                        <h3 id="ticket-day">04</h3>
+                        <span>2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Made with love, care, and a lot of sweet thoughts for <span class="recipient-name">Bestie</span>.</p>
+        <p>Designed to say sorry to the best person in the world <span class="footer-heart">♥</span></p>
+    </footer>
+
+    <!-- Scripting for Interactivity -->
+    <script>
+        // Personalization Data
+        let friendName = "Saloni Saini";
+        let yourName = "Jason";
+
+        // DOM elements
+        const setupModal = document.getElementById('setup-modal');
+        const friendInput = document.getElementById('friend-name-input');
+        const yourInput = document.getElementById('your-name-input');
+
+        // Check if personalization exists in localStorage
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('friendName') && localStorage.getItem('yourName')) {
+                friendName = localStorage.getItem('friendName');
+                yourName = localStorage.getItem('yourName');
+                setupModal.classList.add('hidden');
+                updatePageData();
+            } else {
+                // Show modal if not set
+                setupModal.classList.remove('hidden');
+            }
+            initCanvas();
+            initQuotes();
+            initNavigation();
+            initNoButton();
+            setupTicketDate();
+        });
+
+        function savePersonalization() {
+            const fVal = friendInput.value.trim();
+            const yVal = yourInput.value.trim();
+            
+            if (fVal && yVal) {
+                friendName = fVal;
+                yourName = yVal;
+                localStorage.setItem('friendName', friendName);
+                localStorage.setItem('yourName', yourName);
+                setupModal.classList.add('hidden');
+                updatePageData();
+            }
+        }
+
+        function openPersonalization() {
+            friendInput.value = friendName;
+            yourInput.value = yourName;
+            setupModal.classList.remove('hidden');
+        }
+
+        function updatePageData() {
+            // Update Friend's Name
+            document.getElementById('hero-friend-name').innerText = friendName;
+            document.querySelectorAll('.recipient-name').forEach(el => {
+                el.innerText = friendName;
+            });
+            document.getElementById('hero-heading').innerText = `🥺 I'm Really Sorry, ${friendName} ❤️`;
+
+            // Update Your Name
+            document.getElementById('sender-signature').innerHTML = `${yourName}`;
+            document.getElementById('sender-ticket-name').innerText = yourName;
+        }
+
+        // Auto-fill reconciliation ticket date dynamically with tomorrow's date
+        function setupTicketDate() {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            
+            const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+            const monthStr = months[tomorrow.getMonth()];
+            const dayStr = String(tomorrow.getDate()).padStart(2, '0');
+            const yearStr = tomorrow.getFullYear();
+            
+            document.getElementById('ticket-month').innerText = monthStr;
+            document.getElementById('ticket-day').innerText = dayStr;
+            
+            const ticketDateSpan = document.querySelector('.ticket-date span:last-child');
+            if (ticketDateSpan) {
+                ticketDateSpan.innerText = yearStr;
+            }
+        }
+
+        // Envelope Interactivity
+        function openLetter(event) {
+            const envelope = document.getElementById('envelope');
+            if (!envelope.classList.contains('opened')) {
+                envelope.classList.add('opened');
+            }
+        }
+
+        function closeLetter(event) {
+            event.stopPropagation(); // prevent re-opening immediately
+            const envelope = document.getElementById('envelope');
+            envelope.classList.remove('opened');
+        }
+
+        // Quotes Slider Interactivity
+        let currentSlide = 0;
+        let slideInterval;
+        const slides = document.querySelectorAll('.quote-slide');
+        const dots = document.querySelectorAll('.quotes-dots .dot');
+
+        function initQuotes() {
+            // Auto slide every 5 seconds
+            startSlideShow();
+        }
+
+        function startSlideShow() {
+            slideInterval = setInterval(() => {
+                let next = (currentSlide + 1) % slides.length;
+                setSlide(next);
+            }, 6000);
+        }
+
+        function setSlide(index) {
+            clearInterval(slideInterval);
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = index;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            startSlideShow();
+        }
+
+        // Navigation Highlight On Scroll
+        function initNavigation() {
+            const sections = document.querySelectorAll('header, section, .envelope-section');
+            const navLinks = document.querySelectorAll('.navbar a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    // Offset navbar height
+                    if (pageYOffset >= sectionTop - 120) {
+                        current = section.getAttribute('id') || '';
+                    }
+                });
+
+                // Special adjustments for envelope section / interactive section
+                if (pageYOffset < 100) {
+                    current = 'home';
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    const href = link.getAttribute('href').substring(1);
+                    if (href === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // Playful runaway 'No' button
+        function initNoButton() {
+            const noBtn = document.getElementById('no-btn');
+            const container = document.getElementById('forgive-card');
+
+            const moveButton = () => {
+                // Keep the button within the forgive-card container boundaries
+                const cardRect = container.getBoundingClientRect();
+                const btnRect = noBtn.getBoundingClientRect();
+                
+                // Calculate max offsets relative to card container
+                const maxX = cardRect.width - btnRect.width - 20;
+                const maxY = cardRect.height - btnRect.height - 20;
+                
+                const randomX = Math.max(10, Math.random() * maxX);
+                const randomY = Math.max(10, Math.random() * maxY);
+
+                noBtn.style.position = 'absolute';
+                noBtn.style.left = `${randomX}px`;
+                noBtn.style.top = `${randomY}px`;
+            };
+
+            noBtn.addEventListener('mouseenter', moveButton);
+            noBtn.addEventListener('click', moveButton);
+        }
+
+        // Web Audio API Synthesizer for victory chime
+        function playSuccessSound() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // A sweet melodic sequence of sine waves
+                const notes = [
+                    { freq: 523.25, delay: 0 },    // C5
+                    { freq: 659.25, delay: 100 },  // E5
+                    { freq: 783.99, delay: 200 },  // G5
+                    { freq: 1046.50, delay: 300 }, // C6
+                    { freq: 1318.51, delay: 450 }  // E6
+                ];
+                
+                notes.forEach((note) => {
+                    setTimeout(() => {
+                        const osc = audioCtx.createOscillator();
+                        const gainNode = audioCtx.createGain();
+                        
+                        osc.connect(gainNode);
+                        gainNode.connect(audioCtx.destination);
+                        
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(note.freq, audioCtx.currentTime);
+                        
+                        gainNode.gain.setValueAtTime(0.12, audioCtx.currentTime);
+                        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+                        
+                        osc.start();
+                        osc.stop(audioCtx.currentTime + 0.5);
+                    }, note.delay);
+                });
+            } catch (e) {
+                console.log("Audio not supported or blocked by browser user interaction rules.");
+            }
+        }
+
+        // Trigger Forgiveness Celebration
+        function triggerForgiveness() {
+            // Play sweet success chime
+            playSuccessSound();
+            
+            // Trigger image explosions / particle bursts on canvas
+            explosionActive = true;
+            burstParticles(150);
+
+            // Change forgive card to success state
+            document.getElementById('question-state').style.display = 'none';
+            const successState = document.getElementById('success-state');
+            successState.classList.add('show');
+            document.getElementById('forgive-card').classList.add('success-mode');
+
+            // Spawn floating hearts continuously for a few seconds
+            const interval = setInterval(() => {
+                spawnRandomHeart();
+            }, 100);
+
+            setTimeout(() => {
+                clearInterval(interval);
+            }, 6000);
+        }
+
+        /* Ambient Canvas Particle Engine */
+        let canvas, ctx;
+        let particles = [];
+        let explosionActive = false;
+
+        class Particle {
+            constructor(x, y, isExplosion = false) {
+                this.x = x;
+                this.y = y;
+                this.isExplosion = isExplosion;
+                this.size = Math.random() * 15 + 10;
+                
+                // Color variations: pink, lavender, light blue, soft gold/yellow
+                const colors = [
+                    'rgba(255, 198, 255, 0.8)',  // Pastel pink
+                    'rgba(214, 199, 255, 0.8)',  // Pastel lavender
+                    'rgba(179, 229, 252, 0.8)',  // Pastel blue
+                    'rgba(255, 240, 245, 0.8)',  // Soft white/pink
+                    'rgba(255, 235, 156, 0.8)'   // Sparkle gold
+                ];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Shapes: 0 for heart, 1 for sparkle star, 2 for simple bubble
+                this.shape = Math.floor(Math.random() * 3);
+
+                if (isExplosion) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = Math.random() * 8 + 3;
+                    this.vx = Math.cos(angle) * speed;
+                    this.vy = Math.sin(angle) * speed - 2; // general upward blast
+                    this.gravity = 0.15;
+                    this.alpha = 1.0;
+                    this.decay = Math.random() * 0.015 + 0.008;
+                } else {
+                    this.vx = Math.random() * 1 - 0.5;
+                    this.vy = -(Math.random() * 1 + 0.5); // float up
+                    this.gravity = 0;
+                    this.alpha = Math.random() * 0.4 + 0.2;
+                    this.decay = 0.0005;
+                }
+                this.rotation = Math.random() * Math.PI * 2;
+                this.rotationSpeed = (Math.random() - 0.5) * 0.03;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+                ctx.fillStyle = this.color;
+                
+                if (this.shape === 0) {
+                    // Draw Heart
+                    ctx.beginPath();
+                    const d = this.size;
+                    ctx.moveTo(0, d / 4);
+                    ctx.bezierCurveTo(d / 2, -d / 2, d * 1.2, -d / 4, 0, d);
+                    ctx.bezierCurveTo(-d * 1.2, -d / 4, -d / 2, -d / 2, 0, d / 4);
+                    ctx.closePath();
+                    ctx.fill();
+                } else if (this.shape === 1) {
+                    // Draw Star/Sparkle
+                    ctx.beginPath();
+                    const spikes = 4;
+                    const outerRadius = this.size / 2;
+                    const innerRadius = this.size / 5;
+                    let rot = Math.PI / 2 * 3;
+                    let x = 0;
+                    let y = 0;
+                    const step = Math.PI / spikes;
+
+                    ctx.moveTo(0, -outerRadius);
+                    for (let i = 0; i < spikes; i++) {
+                        x = Math.cos(rot) * outerRadius;
+                        y = Math.sin(rot) * outerRadius;
+                        ctx.lineTo(x, y);
+                        rot += step;
+
+                        x = Math.cos(rot) * innerRadius;
+                        y = Math.sin(rot) * innerRadius;
+                        ctx.lineTo(x, y);
+                        rot += step;
+                    }
+                    ctx.lineTo(0, -outerRadius);
+                    ctx.closePath();
+                    ctx.fill();
+                } else {
+                    // Draw Simple Circle
+                    ctx.beginPath();
+                    ctx.arc(0, 0, this.size / 3, 0, Math.PI * 2);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vy += this.gravity;
+                this.rotation += this.rotationSpeed;
+                this.alpha -= this.decay;
+                
+                if (this.alpha <= 0) {
+                    return false;
+                }
+                // Out of horizontal bounds
+                if (this.x < -50 || this.x > canvas.width + 50) {
+                    return false;
+                }
+                // Ambient particles float off top
+                if (!this.isExplosion && this.y < -50) {
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        function initCanvas() {
+            canvas = document.getElementById('ambient-canvas');
+            ctx = canvas.getContext('2d');
+            resizeCanvas();
+            
+            window.addEventListener('resize', resizeCanvas);
+
+            // Populate initial ambient particles
+            for (let i = 0; i < 40; i++) {
+                const p = new Particle(
+                    Math.random() * canvas.width,
+                    Math.random() * canvas.height
+                );
+                p.y = Math.random() * canvas.height; // scatter vertically
+                particles.push(p);
+            }
+
+            // Start loop
+            requestAnimationFrame(animate);
+
+            // Continuous ambient spawner
+            setInterval(() => {
+                if (particles.length < 50) {
+                    particles.push(new Particle(
+                        Math.random() * canvas.width,
+                        canvas.height + 20
+                    ));
+                }
+            }, 300);
+        }
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Update and draw particles
+            particles = particles.filter(p => {
+                p.draw();
+                return p.update();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        function burstParticles(count) {
+            // Find coordinates of yes-btn to shoot particles from
+            const btn = document.getElementById('yes-btn');
+            const rect = btn.getBoundingClientRect();
+            const startX = rect.left + rect.width / 2;
+            const startY = rect.top + rect.height / 2;
+
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle(startX, startY, true));
+            }
+        }
+
+        function spawnRandomHeart() {
+            const rx = Math.random() * canvas.width;
+            const ry = canvas.height + 20;
+            const p = new Particle(rx, ry, true);
+            p.vy = -(Math.random() * 6 + 4); // shoot upwards
+            p.vx = (Math.random() - 0.5) * 4;
+            p.gravity = 0.05;
+            particles.push(p);
+        }
+    </script>
+</body>
+</html>
